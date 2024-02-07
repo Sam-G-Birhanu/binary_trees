@@ -29,7 +29,7 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
             if(new_node == NULL){
                 new_node->left = temp;
             }
-            return (parent->left);
+            return (parent);
         }
     }
 }
