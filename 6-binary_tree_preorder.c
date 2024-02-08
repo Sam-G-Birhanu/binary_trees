@@ -14,12 +14,12 @@ void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
             if (tree->left !=NULL)
             {
                 func( tree->left->n);
-                binary_tree_preorder(tree->left);
+                binary_tree_preorder(tree->left, func);
             }
             if (tree->right != NULL)
             {
                 func(tree->right->n);
-                binary_tree_preorder(tree->right);
+                binary_tree_preorder(tree->right, func);
             }
             return;
         }
