@@ -29,6 +29,7 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
             binary_tree_insert_left(new_node,x);
             free(temp);
             free(new_node_2);
+            return (new_node);
         }
     }
 }
