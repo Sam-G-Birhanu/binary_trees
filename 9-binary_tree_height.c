@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 
-size_t count_right(binary_tree_t *tree, int count)
+size_t count_right(const binary_tree_t *tree, int count)
 {
     if (tree == NULL)
         return count;
@@ -11,7 +11,7 @@ size_t count_right(binary_tree_t *tree, int count)
 return count;
 }
 
-size_t count_left(binary_tree_t *tree, int count)
+size_t count_left(const binary_tree_t *tree, int count)
 {
     if (tree == NULL)
         return count;
@@ -25,10 +25,11 @@ size_t count_left(binary_tree_t *tree, int count)
 
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-  size_t left_h = count_left(tree);
-  size_t right_h = count_right(tree);
-  if (left > right)
-    return (left);
+    const binary_tree_t *temp = tree;
+  size_t left_h = count_left(temp, 0);
+  size_t right_h = count_right(temp, 0);
+  if (left_h > right_h)
+    return (left_h);
   else
-    return (right)
+    return (right_h);
 }
