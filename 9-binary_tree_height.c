@@ -1,36 +1,27 @@
 #include "binary_trees.h"
-/**
- * max - returns the maximum of two numbers
- * @a: first number
- * @b: second number
- * Return: maximum of a and b
- **/
-size_t max(size_t a, size_t b)
-{
-    return (a > b ? a : b);
-}
 
 /**
- * binary_tree_height - computes the height of a binary tree
- * @tree: root node of the binary tree
- * Return: height of the binary tree
- **/
-size_t binary_tree_h(const binary_tree_t *tree)
-{
-    size_t left_height;
-    size_t right_height;
-    if (tree == NULL)
-        return 0;
-    left_height = binary_tree_h(tree->left);
-    right_height = binary_tree_h(tree->right);
+ * binary_tree_height - measure height of binary tree
+ * @tree: pointer to the root node of the tree to measure the height of
+ * Return: height of tree, if tree is NULL, your function must return 0
+ */
 
-    return max(left_height, right_height) + 1;
-}
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-    size_t h;
-    if (tree == NULL)
-        return (0);
-    h = binary_tree_h(tree) -1;
-    return (h);
+	size_t l_height = 0;
+	size_t r_height = 0;
+
+	if (tree == NULL)
+		return (0);
+
+	if (tree->left == NULL && tree->right == NULL)
+		return (0);
+
+	l_height = binary_tree_height(tree->left) + 1;
+	r_height = binary_tree_height(tree->right) + 1;
+
+	if (l_height > r_height)
+		return (l_height);
+	else
+		return (r_height);
 }
