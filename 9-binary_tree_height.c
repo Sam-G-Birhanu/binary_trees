@@ -15,15 +15,20 @@ size_t max(size_t a, size_t b)
  * @tree: root node of the binary tree
  * Return: height of the binary tree
  **/
-size_t binary_tree_height(const binary_tree_t *tree)
+size_t binary_tree_h(const binary_tree_t *tree)
 {
     size_t left_height;
     size_t right_height;
     if (tree == NULL)
         return 0;
-    left_height = binary_tree_height(tree->left);
-    right_height = binary_tree_height(tree->right);
+    left_height = binary_tree_h(tree->left);
+    right_height = binary_tree_h(tree->right);
 
-    return max(left_height, right_height);
+    return max(left_height, right_height) + 1;
 }
-
+size_t binary_tree_height(const binary_tree_t *tree)
+{
+    size_t h;
+    h = binary_tree_h(tree);
+    return (h);
+}
