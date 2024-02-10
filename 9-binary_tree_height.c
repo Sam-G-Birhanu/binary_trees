@@ -6,19 +6,21 @@
  * Return: returns count
  **/
 
-size_t count_right(const binary_tree_t *tree)
+size_t count_right(const binary_tree_t *tree, int count)
 {
-	size_t right_height = 0;
-    if (tree == NULL)
-        return 0;
-
-    
-    while (tree->right != NULL)
-    {
-        right_height++;
-        tree = tree->right;
-    }
-    return right_height;
+	if (tree == NULL)
+		return (count);
+	if (tree->right != NULL)
+	{
+		count++;
+		count = count_right(tree->right, count);
+	}
+	else
+	{
+		count++;
+		count = count_right(tree->left, count);
+	}	
+	return (count);
 }
 /**
  * count_left - counts nodes on the left
@@ -26,18 +28,21 @@ size_t count_right(const binary_tree_t *tree)
  * @count: counts the number of nodes
  * Return: returns count
  **/
-size_t count_left(const binary_tree_t *tree)
+size_t count_left(const binary_tree_t *tree, int count)
 {
-	    size_t left_height = 0;
-    if (tree == NULL)
-        return 0;
-
-    while (tree->left != NULL)
-    {
-        left_height++;
-        tree = tree->left;
-    }
-    return left_height;
+	if (tree == NULL)
+		return (count);
+	if (tree->left != NULL)
+	{
+		count++;
+		count = count_left(tree->left, count);
+	}
+	else
+	{
+		count++;
+		count = count_left(tree->right, count);
+	}	
+	return (count);
 }
 /**
  * binary_tree_height- gets the height of tree
@@ -48,8 +53,8 @@ size_t count_left(const binary_tree_t *tree)
 size_t binary_tree_height(const binary_tree_t *tree)
 {
 	const binary_tree_t *temp = tree;
-	size_t left_h = count_left(temp);
-	size_t right_h = count_right(temp);
+	size_t left_h = count_left(temp, 0);
+	size_t right_h = count_right(temp, 0);
 
 	if (left_h > right_h)
 		return (left_h);
