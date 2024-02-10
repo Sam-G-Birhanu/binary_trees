@@ -60,23 +60,29 @@ size_t binary_tree_count(const binary_tree_t *tree, size_t count)
 	return (count);
 }
 /**
- * binary_tree_size - functions that returns size
- * @tree: tree to be traversed
- * Return: returns size
- **/
+ * my_pow - returns the value of x raised to the power of y
+ * @x: initial value
+ * @y: exponent
+ * Return: value of x raised to power of y or -1 if y is lower than 0
+ */
 
-size_t binary_tree_size(const binary_tree_t *tree)
+int my_pow(int x, int y)
 {
-	return (binary_tree_count(tree, 0));
+	if (y < 0)
+		return (-1);
+	if (y == 0)
+		return (1);
+	return (x * my_pow(x, y - 1));
 }
+
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	int h = (int)measure_height(tree);
-	int h2 = (int)binary_tree_size(tree);
+	int h2 = (int)binary_tree_count(tree, 0);
 if (tree == NULL)
   return (0);
 
-if (binary_tree_balance(tree) == 0 && h2 == ((int)pow(2, h + 1) - 1))
+if (binary_tree_balance(tree) == 0 && h2 == ((int)my_pow(2, h + 1) - 1))
   return (1);
 return 0;
 }
