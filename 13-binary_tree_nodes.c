@@ -10,7 +10,7 @@ size_t count_nl(const binary_tree_t *tree,size_t count)
 	count = count_nl(tree->right, count);
 	return count;
 }
-size_t binary_tree_size(const binary_tree_t *tree)
+size_t binary_tree_nodes(const binary_tree_t *tree)
 {
 return count_nl(tree, 0);
 }
