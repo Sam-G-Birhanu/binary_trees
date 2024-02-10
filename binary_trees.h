@@ -41,4 +41,5 @@ size_t binary_tree_count_l(const binary_tree_t *tree,size_t count);
 size_t binary_tree_leaves(const binary_tree_t *tree);
 size_t count_nl(const binary_tree_t *tree,size_t count);
 size_t binary_tree_nodes(const binary_tree_t *tree);
+int binary_tree_balance(const binary_tree_t *tree);
 #endif
