@@ -1,63 +1,28 @@
 #include "binary_trees.h"
 /**
- * count_right - counts nodes on the left
- * @tree: the tree to be traveresed
- * @count: counts the number of nodes
- * Return: returns count
+ * max - returns the maximum of two numbers
+ * @a: first number
+ * @b: second number
+ * Return: maximum of a and b
  **/
-
-size_t count_right(const binary_tree_t *tree, int count)
+size_t max(size_t a, size_t b)
 {
-	if (tree == NULL)
-		return (count);
-	if (tree->right != NULL)
-	{
-		count++;
-		count = count_right(tree->right, count);
-	}
-	else
-	{
-		count++;
-		count = count_right(tree->left, count);
-	}	
-	return (count);
+    return (a > b ? a : b);
 }
-/**
- * count_left - counts nodes on the left
- * @tree: the tree to be traveresed
- * @count: counts the number of nodes
- * Return: returns count
- **/
-size_t count_left(const binary_tree_t *tree, int count)
-{
-	if (tree == NULL)
-		return (count);
-	if (tree->left != NULL)
-	{
-		count++;
-		count = count_left(tree->left, count);
-	}
-	else
-	{
-		count++;
-		count = count_left(tree->right, count);
-	}	
-	return (count);
-}
-/**
- * binary_tree_height- gets the height of tree
- * @tree: root node of the tree to measure the height.
- * Return: returns height
- **/
 
+/**
+ * binary_tree_height - computes the height of a binary tree
+ * @tree: root node of the binary tree
+ * Return: height of the binary tree
+ **/
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	const binary_tree_t *temp = tree;
-	size_t left_h = count_left(temp, 0);
-	size_t right_h = count_right(temp, 0);
+    if (tree == NULL)
+        return 0;
 
-	if (left_h > right_h)
-		return (left_h);
-	else
-		return (right_h);
+    size_t left_height = binary_tree_height(tree->left);
+    size_t right_height = binary_tree_height(tree->right);
+
+    return max(left_height, right_height) + 1;
 }
+
