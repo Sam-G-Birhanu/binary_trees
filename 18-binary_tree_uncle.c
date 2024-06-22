@@ -19,7 +19,7 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node)
 }
 /**
  * binary_tree_uncle - a function that returns uncle of a node
- * @node - parameter representing node
+ * @node: parameter representing node
  * Return: returns uncle or null
  */
 
