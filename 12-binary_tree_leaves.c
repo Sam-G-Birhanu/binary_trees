@@ -1,9 +1,10 @@
 #include "binary_trees.h"
+
 /**
  * binary_tree_count_l - function that counts
- * @binary_tree_t *tree: a parameter
+ * @tree: a parameter
  * @count: a parameter
- * return: returns count
+ * Return: returns count
  */
 
 size_t binary_tree_count_l(const binary_tree_t *tree, size_t count)
@@ -14,12 +15,13 @@ size_t binary_tree_count_l(const binary_tree_t *tree, size_t count)
 	if (tree->left == NULL && tree->right == NULL)
 		count++;
 	count = binary_tree_count_l(tree->right, count);
-	return(count);
+	return (count);
 }
-/*
- * binary_tree_leaves - a function
+
+/**
+ * binary_tree_leaves - a function that counts leaves
  * @tree: parameter that represents tree
- * return: returns count
+ * Return: returns count
  */
 
 size_t binary_tree_leaves(const binary_tree_t *tree)
