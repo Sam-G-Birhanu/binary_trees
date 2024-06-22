@@ -5,6 +5,7 @@
  * @tree: pointer to the root node of the tree to measure
  * Return: balance factor
  */
+
 int binary_tree_balance(const binary_tree_t *tree)
 {
 	int balance;
@@ -13,10 +14,8 @@ int binary_tree_balance(const binary_tree_t *tree)
 
 	if (tree == NULL || (tree->left == NULL && tree->right == NULL))
 		return (0);
-
 	left_height = measure_height(tree->left);
 	right_height = measure_height(tree->right);
-
 	balance = left_height - right_height;
 
 	return (balance);
@@ -27,6 +26,7 @@ int binary_tree_balance(const binary_tree_t *tree)
  * @tree: pointer to the root of the tree to measure
  * Return: height
  */
+
 size_t measure_height(const binary_tree_t *tree)
 {
 	size_t left_height;
@@ -57,6 +57,7 @@ size_t binary_tree_count(const binary_tree_t *tree, size_t count)
 	count = binary_tree_count(tree->left, count);
 	count++;
 	count = binary_tree_count(tree->right, count);
+
 	return (count);
 }
 /**
@@ -74,15 +75,20 @@ int my_pow(int x, int y)
 		return (1);
 	return (x * my_pow(x, y - 1));
 }
+/**
+ * binary_tree_is_perfect - a function that checks if its perfect
+ * @tree: an arg representing trees
+ * Return: returns 0 or 1
+ */
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	int h = (int)measure_height(tree);
 	int h2 = (int)binary_tree_count(tree, 0);
-if (tree == NULL)
-  return (0);
 
-if (binary_tree_balance(tree) == 0 && h2 == ((int)my_pow(2, h) - 1))
-  return (1);
-return 0;
+	if (tree == NULL)
+		return (0);
+	if (binary_tree_balance(tree) == 0 && h2 == ((int)my_pow(2, h) - 1))
+		return (1);
+	return (0);
 }
